@@ -51,3 +51,5 @@ class MakefileDefinitionProvider implements vscode.DefinitionProvider {
         return undefined;
     }
 }
+
+export default MakefileDefinitionProvider;

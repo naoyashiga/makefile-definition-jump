@@ -1,26 +1,20 @@
 {
-  "name": "makefile-jump",
-  "displayName": "makefile-jump",
-  "description": "",
+  "name": "makefile-definition-jump",
+  "displayName": "makefile-definition-jump",
+  "description": "Jump to makefile target definitions",
+  "publisher": "naoyashiga",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "activationEvents": [
     "onLanguage:makefile"
   ],
   "main": "./dist/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "makefile-jump.helloWorld",
-        "title": "Hello World"
-      }
-    ]
-  },
+  "contributes": {},
   "scripts": {
     "vscode:prepublish": "pnpm run package",
     "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
