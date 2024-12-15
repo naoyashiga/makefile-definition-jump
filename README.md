@@ -1,71 +1,69 @@
-# makefile-jump README
+# Makefile Target Jump
 
-This is the README for your extension "makefile-jump". After writing up a brief description, we recommend including the following sections.
+A Visual Studio Code extension that enables jumping to makefile target definitions when using `make` commands.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension allows you to:
+- Jump to target definitions in Makefiles when your cursor is on a target name after the `make` command
+- Works with basic makefile targets
 
-For example if there is an image subfolder under your extension project workspace:
+Example:
+```makefile
+# You can jump from this line...
+make setup
 
-\!\[feature X\]\(images/feature-x.png\)
+# ...to this target definition
+setup:
+    @echo "Running setup"
+```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
+
+1. Place your cursor on any target name after a `make` command
+2. Use one of the following methods to jump to the definition:
+   - Press F12
+   - Right-click and select "Go to Definition"
+   - Ctrl+Click (Cmd+Click on macOS) on the target name
+
+## Current Limitations
+
+The extension currently supports:
+- Basic target definitions
+- Targets with simple commands
+- Jumping to definitions within the same file
+
+Not yet supported:
+- Variable-based targets (e.g., `$(TARGET):`)
+- Multiple targets in one line (e.g., `target1 target2:`)
+- Cross-file definition jumping
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Visual Studio Code version 1.96.0 or higher
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+This extension does not contribute any settings yet.
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Please report any issues on the GitHub repository.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release:
+- Basic target definition jumping functionality
+- Support for simple makefile targets
 
 ---
 
-## Following extension guidelines
+## Contributing
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+Feel free to open issues or submit pull requests on GitHub.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+## License
 
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension is licensed under the MIT License.
