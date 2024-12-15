@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-    // 定義プロバイダーの登録
     const provider = new MakefileDefinitionProvider();
     const selector = { language: 'makefile', scheme: 'file' };
     
@@ -16,23 +15,32 @@ class MakefileDefinitionProvider implements vscode.DefinitionProvider {
         position: vscode.Position,
         token: vscode.CancellationToken
     ): Promise<vscode.Definition | undefined> {
-        // カーソル位置の単語を取得
+		// get the range of the word at the current position
         const wordRange = document.getWordRangeAtPosition(position);
         if (!wordRange) {
             return undefined;
         }
-		console.log({wordRange});
-        
+
         const word = document.getText(wordRange);
+		// get the line of the current position
+		const line = document.lineAt(position.line);
+		// get the text before the word
+		const linePrefix = line.text.substring(0, wordRange.start.character);
+
+		// Check if end of the line prefix is a make command
+		const isMakeCommand = linePrefix.match(/^\s*make\s+/);
+
+		if (!isMakeCommand) {
+			return undefined;
+		}
         
-        // ドキュメント内のすべての行を検索
+		// Search all lines in the document
         for (let i = 0; i < document.lineCount; i++) {
             const line = document.lineAt(i);
-            // ターゲット定義の正規表現パターン
+			// Check if the line starts with the word followed by a colon
             const targetMatch = line.text.match(`^${word}\\s*:`);
             
             if (targetMatch) {
-				console.log({line});
                 return new vscode.Location(
                     document.uri,
                     new vscode.Position(i, 0)

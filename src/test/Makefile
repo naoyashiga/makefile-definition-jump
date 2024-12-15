@@ -120,6 +120,7 @@ backup:
 	@echo "Backing up configurations..."
 	cp docker-compose*.yml backups/
 	@echo "=== Backup completed successfully ==="
+	make hoge && make update && make fuga
 
 .PHONY: restore
 restore:
